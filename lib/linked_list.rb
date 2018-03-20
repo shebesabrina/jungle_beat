@@ -48,4 +48,14 @@ class LinkedList
       @head = new_node
     end
   end
+
+  def insert(index, data)
+    current_node = @head
+    current_node = Node.new(data)
+    index = current_node.next_node
+    index.times do
+      current_node.next_node.test_data
+    end
+    current_node = Node.new(data)
+  end
 end

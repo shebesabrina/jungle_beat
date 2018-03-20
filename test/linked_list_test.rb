@@ -21,6 +21,7 @@ class LinkedListTest < Minitest::Test
     list.append("doop")
 
     assert_equal "doop", list.head.data
+    assert_instance_of Node, list.head
   end
 
   def test_add_node_to_head_with_pointer
@@ -32,7 +33,9 @@ class LinkedListTest < Minitest::Test
 
   def test_count_node
     list = LinkedList.new
+    assert_equal 0, list.count
     list.append("doop")
+    assert_equal 1, list.count
     list.append("deep")
     list.append("plop")
 
@@ -62,22 +65,24 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "dop", list.head.data
     assert_equal "plop", list.head.next_node.data
-    # > list = LinkedList.new
-    # > list.append("plop")
-    # => "plop"
-    # > list.to_string
-    # => "plop"
-    # > list.append("suu")
-    # => "suu"
-    # > list.prepend("dop")
-    # => "dop"
+  end
+
+  def test_insert_node
+    list = LinkedList.new
+    list.append("dop")
+    list.append("plop")
+    list.append("suu")
+
+    assert_equal "plop", list.head.next_node.data
+
+    # binding.pry
+    list.insert(1, "woo")
+    assert_equal "dop", list.head.data
+    assert_equal "woo", list.head.next_node.data
+    assert_equal "plop", list.head.next_node.next_node.data
   end
 end
 
-# > list.to_string
-# => "dop plop suu"
-# > list.count
-# => 3
 # > list.insert(1, "woo")
 # => "woo"
 # list.to_string
