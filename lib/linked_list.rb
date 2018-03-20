@@ -1,14 +1,19 @@
-require './lib/node'
-
 class LinkedList
-  attr_reader :head
-  attr_accessor :node
+  attr_reader :head,
+              :count
+
   def initialize
     @head = nil
-    @node = nil
+    @count = 0
   end
 
   def append(beat)
-    @head = node.next_node(beat)
+    @head.nil?
+    @head = Node.new(beat)
+    @count += 1
+  end
+
+  def to_string(beat)
+    "{beat}"
   end
 end

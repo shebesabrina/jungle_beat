@@ -18,20 +18,34 @@ class LinkedListTest < Minitest::Test
 
   def test_append_node
     list = LinkedList.new
+    list.append("doop")
 
-    assert_equal "doop", list.append("doop")
+    assert_equal "doop", list.head.data
   end
 
-  def test_instance_of_next_node
+  def test_add_node_to_head_with_pointer
     list = LinkedList.new
-
     list.append("doop")
-    # > list.head.next_node
-    # => nil
+
     assert_nil list.head.next_node
   end
-# > list.count
-# => 1
+
+  def test_count_node
+    list = LinkedList.new
+    list.append("doop")
+    list.append("poop")
+
+    assert_equal 2, list.count
+  end
+
+  def test_string_of_beats
+    list = LinkedList.new
+    list.append("doop")
+    assert_equal "doop", list.to_string
+    list.append("poop")
+
+    assert_equal "doop poop", list.to_string
+  end
 # > list.to_string
 # => "doop"
 end
