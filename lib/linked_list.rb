@@ -7,13 +7,13 @@ class LinkedList
     @count = 0
   end
 
-  def append(beat)
+  def append(data)
     @head.nil?
-    @head = Node.new(beat)
+    @head = Node.new(data)
     @count += 1
   end
 
-  def to_string(beat)
-    "{beat}"
+  def to_string
+    "#{@head.data}"
   end
 end
