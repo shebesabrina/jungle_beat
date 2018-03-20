@@ -41,9 +41,10 @@ class LinkedListTest < Minitest::Test
   def test_string_of_beats
     list = LinkedList.new
     list.append("doop")
-    # assert_equal "doop", list.to_string
-    # list.append("poop")
+    assert_equal "doop ", list.to_string
+    list.append("deep")
 
-    assert_equal "doop", list.to_string
+    # binding.pry
+    assert_equal "doop deep", list.to_string
   end
 end
