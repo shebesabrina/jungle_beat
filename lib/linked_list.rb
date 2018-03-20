@@ -7,13 +7,13 @@ class LinkedList
 
   def append(data)
     if @head.nil?
-    @head = Node.new(data)
+      @head = Node.new(data)
     else
       current_node = @head
       until current_node.next_node.nil?
         current_node = current_node.next_node
       end
-    current_node.next_node = Node.new(data)
+      current_node.next_node = Node.new(data)
     end
   end
 
@@ -31,11 +31,21 @@ class LinkedList
   def to_string
     current_node = @head
     @head if @head.nil?
-    node_data = "#{@head.data} "
+    node_data = "#{@head.data}"
     until current_node.next_node.nil?
       current_node = current_node.next_node
-      node_data += "#{current_node.data}"
+      node_data += " #{current_node.data}"
     end
     node_data
+  end
+
+  def prepend(data)
+    if @head.nil?
+      @head = Node.new(data)
+    else
+      new_node = Node.new(data)
+      new_node.next_node = @head
+      @head = new_node
+    end
   end
 end

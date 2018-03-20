@@ -33,18 +33,52 @@ class LinkedListTest < Minitest::Test
   def test_count_node
     list = LinkedList.new
     list.append("doop")
-    list.append("poop")
+    list.append("deep")
+    list.append("plop")
 
-    assert_equal 2, list.count
+    assert_equal 3, list.count
   end
 
   def test_string_of_beats
     list = LinkedList.new
     list.append("doop")
-    assert_equal "doop ", list.to_string
+    assert_equal "doop", list.to_string
     list.append("deep")
-
-    # binding.pry
     assert_equal "doop deep", list.to_string
+    list.append("plop")
+
+    assert_equal "doop deep plop", list.to_string
+  end
+
+  def test_prepend
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+
+    assert_equal "plop", list.head.data
+    assert_equal "suu", list.head.next_node.data
+
+    list.prepend("dop")
+
+    assert_equal "dop", list.head.data
+    assert_equal "plop", list.head.next_node.data
+    # > list = LinkedList.new
+    # > list.append("plop")
+    # => "plop"
+    # > list.to_string
+    # => "plop"
+    # > list.append("suu")
+    # => "suu"
+    # > list.prepend("dop")
+    # => "dop"
   end
 end
+
+# > list.to_string
+# => "dop plop suu"
+# > list.count
+# => 3
+# > list.insert(1, "woo")
+# => "woo"
+# list.to_string
+# => "dop woo plop suu"
