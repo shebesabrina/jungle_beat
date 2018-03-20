@@ -48,14 +48,33 @@ class LinkedList
       @head = new_node
     end
   end
-
-  def insert(index, data)
-    current_node = @head
-    current_node = Node.new(data)
-    index = current_node.next_node
-    index.times do
-      current_node.next_node.test_data
-    end
-    current_node = Node.new(data)
-  end
 end
+
+  # def insert(index, data)
+  #   current_node = @head
+  #   # current_node = Node.new(data)
+  #   # index = current_node(index)
+  #   (index - 1).times do
+  #     if current_node.next_node != nil
+  #     current_node.next_node.data
+  #   end
+  #   current_node = Node.new(data)
+  # end
+
+
+
+ #  def insert_at_index(index, value)
+ #   current = head
+ #
+ #   (index - 1).times do
+ #     if current.pointer != nil
+ #     current = current.next
+ #     end
+ #   end
+ #   new_node = Node.new(value)
+ #   if current.pointer != nil
+ #     new_node.pointer = current.pointer
+ #   end
+ #   current.pointer = new_node
+ # end
+# end

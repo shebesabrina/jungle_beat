@@ -19,8 +19,16 @@ class LinkedListTest < Minitest::Test
   def test_append_node
     list = LinkedList.new
     list.append("doop")
+    list.append("deep")
+    list.append("plop")
+    list.append("suu")
+    list.append("wuu")
 
     assert_equal "doop", list.head.data
+    assert_equal "deep", list.head.next_node.data
+    assert_equal "plop", list.head.next_node.next_node.data
+    assert_equal "suu", list.head.next_node.next_node.next_node.data
+    assert_equal "wuu", list.head.next_node.next_node.next_node.next_node.data
     assert_instance_of Node, list.head
   end
 
@@ -68,6 +76,7 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_insert_node
+    skip
     list = LinkedList.new
     list.append("dop")
     list.append("plop")
