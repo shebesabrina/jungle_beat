@@ -99,7 +99,8 @@ class LinkedListTest < Minitest::Test
     list.append("blop")
 
     list.find(2, 1)
-    assert_equal "shi", list.head.next_node.next_node.data
+
+    assert_equal "shi", list.find(2, 1)
   end
 
 #   > list.to_string
