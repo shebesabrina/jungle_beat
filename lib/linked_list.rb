@@ -49,10 +49,9 @@ class LinkedList
       @head = new_node
     end
   end
-
+  
   def insert(index, data)
-    Node.new(data) if @head.nil?
-
+    @head = Node.new(data) if @head.nil?
     new_node = Node.new(data)
     current_node = @head
     (index - 2).times do

@@ -84,10 +84,18 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "plop", list.head.next_node.data
     list.insert(2, "woo")
-    
+
     assert_equal "dop", list.head.data
     assert_equal "woo", list.head.next_node.data
     assert_equal "plop", list.head.next_node.next_node.data
+    assert_equal "suu", list.head.next_node.next_node.next_node.data
+  end
+
+  def test_insert_into_empty_linked_list
+    list = LinkedList.new
+    list.insert(1, "woo")
+
+    assert_equal "woo", list.head.data
   end
 
   def test_find
