@@ -51,38 +51,30 @@ class LinkedList
   end
 
   def insert(index, data)
-    if @head.nil?
-      @head = Node.new(data)
-    else
-      new_node = Node.new(data)
-      current_node = @head
-      (index - 1).times do
-        current_node =  current_node.next_node
-      end
-      new_node.next_node = current_node
-      current_node = @head
-      (index - 2).times do
-        current_node = current_node.next_node
-      end
-      current_node.next_node = new_node
+    Node.new(data) if @head.nil?
+
+    new_node = Node.new(data)
+    current_node = @head
+    (index - 2).times do
+      current_node = current_node.next_node
     end
+    insertion_node = current_node
+    new_node.next_node = current_node.next_node
+    insertion_node.next_node = new_node
   end
 
-  def find(index, data)
-    if @head.nil?
-      @head = Node.new(data)
-    else
-      current_node = @head
-      (index - 1).times do
-        current_node =  current_node.next_node
-      end
-      current_node = @head
-      (index - 1).times do
-        current_node = current_node.next_node
-      end
-      current_node.data
+  def find(index, element_quantity)
+    @head if @head.nil?
+
+    current_node = @head
+    index.times do
+      current_node = current_node.next_node
     end
+    elements = current_node.data
+    (element_quantity - 1).times do
+      current_node = current_node.next_node
+      elements += " #{current_node.data}"
+    end
+    elements
   end
-
-
 end

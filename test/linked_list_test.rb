@@ -84,6 +84,7 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "plop", list.head.next_node.data
     list.insert(2, "woo")
+    
     assert_equal "dop", list.head.data
     assert_equal "woo", list.head.next_node.data
     assert_equal "plop", list.head.next_node.next_node.data
@@ -101,11 +102,12 @@ class LinkedListTest < Minitest::Test
     list.find(2, 1)
 
     assert_equal "shi", list.find(2, 1)
+    assert_equal "woo shi shu", list.find(1, 3)
+    #   > list.to_string
+    # => "deep woo shi shu blop"
+    # => "shi"
   end
 
-#   > list.to_string
-# => "deep woo shi shu blop"
-# => "shi"
 # > list.find(1, 3)
 # => "woo shi shu"
 # > list.includes?("deep")
