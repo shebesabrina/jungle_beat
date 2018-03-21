@@ -75,7 +75,7 @@ class LinkedListTest < Minitest::Test
     assert_equal "plop", list.head.next_node.data
   end
 
-  def test_insert_node
+  def test_insert
 
     list = LinkedList.new
     list.append("dop")
@@ -83,16 +83,38 @@ class LinkedListTest < Minitest::Test
     list.append("suu")
 
     assert_equal "plop", list.head.next_node.data
-
     list.insert(2, "woo")
-    # binding.pry
     assert_equal "dop", list.head.data
     assert_equal "woo", list.head.next_node.data
     assert_equal "plop", list.head.next_node.next_node.data
   end
-end
 
-# > list.insert(1, "woo")
-# => "woo"
-# list.to_string
-# => "dop woo plop suu"
+  def test_find
+
+    list =  LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    list.find(2, 1)
+    assert_equal "shi", list.head.next_node.next_node.data
+  end
+
+#   > list.to_string
+# => "deep woo shi shu blop"
+# => "shi"
+# > list.find(1, 3)
+# => "woo shi shu"
+# > list.includes?("deep")
+# => true
+# > list.includes?("dep")
+# => false
+# > list.pop
+# => "blop"
+# > list.pop
+# => "shu"
+# > list.to_string
+# => "deep woo shi"
+end

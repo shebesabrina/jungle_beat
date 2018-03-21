@@ -67,4 +67,24 @@ class LinkedList
       current_node.next_node = new_node
     end
   end
+
+  def find(index, data)
+    if @head.nil?
+      @head = Node.new(data)
+    else
+      new_node = Node.new(data)
+      current_node = @head
+      (index - 1).times do
+        current_node =  current_node.next_node
+      end
+      new_node.next_node = current_node
+      current_node = @head
+      (index - 2).times do
+        current_node = current_node.next_node
+      end
+      current_node.next_node = new_node
+    end
+  end
+
+
 end
