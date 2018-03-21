@@ -76,7 +76,7 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_insert_node
-    skip
+
     list = LinkedList.new
     list.append("dop")
     list.append("plop")
@@ -84,8 +84,8 @@ class LinkedListTest < Minitest::Test
 
     assert_equal "plop", list.head.next_node.data
 
+    list.insert(2, "woo")
     # binding.pry
-    list.insert(1, "woo")
     assert_equal "dop", list.head.data
     assert_equal "woo", list.head.next_node.data
     assert_equal "plop", list.head.next_node.next_node.data
