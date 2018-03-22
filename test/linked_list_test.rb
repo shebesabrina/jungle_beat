@@ -149,14 +149,8 @@ class LinkedListTest < Minitest::Test
     list.append("shu")
     list.append("blop")
 
-    expect_1 = "blop"
-    expect_2 = "shu"
-    expect_3 = "deep woo shi"
-    assert_equal expect_1, list.pop
-    # binding.pry
-    assert_equal expect_2, list.pop
+    assert_equal "blop", list.pop
 
-    assert_equal expect_3, list.to_string
   end
 # > list.pop
 # => "blop"

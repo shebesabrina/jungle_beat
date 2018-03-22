@@ -22,10 +22,8 @@ class LinkedList
     current_node = @head
     @head if @head.nil?
     node_data = "#{@head.data}"
-    until current_node.next_node.nil?
-      current_node = current_node.next_node
+    current_node = current_node.next_node until current_node.next_node.nil?
       node_data += " #{current_node.data}"
-    end
     node_data
   end
 
@@ -34,9 +32,8 @@ class LinkedList
       @head = Node.new(data)
     else
       current_node = @head
-      until current_node.next_node.nil?
+      current_node = current_node.next_node until current_node.next_node.nil?
         current_node = current_node.next_node
-      end
       current_node.next_node = Node.new(data)
     end
   end
@@ -93,22 +90,15 @@ class LinkedList
   def pop
     return nil if @head.nil?
     if @head.next_node.nil?
-      value = @head.data
-      @head.data = nil
+      beat = "#{@head.data}"
+      @head = nil
+      beat
     else
       current_node = @head
-      if current_node.next_node.nil?
-        current_node.data
-      else
-        until current_node.next_node.nil?
-          current_node = current_node.next_node
-        end
-        value = current_node.data
-        current_node = nil
-      end
+      current_node = current_node.next_node until current_node.next_node.nil?
+      tail_node = "#{current_node.data}"
+      current_node.next_node = nil
+      tail_node
     end
-    value
   end
-  #values is giving back nil, first test is passing need to work on getting the next node to equal nil
-
 end
