@@ -107,25 +107,58 @@ class LinkedListTest < Minitest::Test
     list.append("shu")
     list.append("blop")
 
-    list.find(2, 1)
+    expect_1 = "shi"
+    expect_2 = "woo shi shu"
 
-    assert_equal "shi", list.find(2, 1)
-    assert_equal "woo shi shu", list.find(1, 3)
-    #   > list.to_string
-    # => "deep woo shi shu blop"
-    # => "shi"
+    actual_1 = list.find(2, 1)
+    actual_2 = list.find(1, 3)
+
+    assert_equal expect_1, actual_1
+    assert_equal expect_2, actual_2
   end
 
-# > list.find(1, 3)
-# => "woo shi shu"
-# > list.includes?("deep")
-# => true
-# > list.includes?("dep")
-# => false
+  def test_include
+
+    list = LinkedList.new
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+
+    expect_1 = true
+    expect_2 = true
+    expect_3 = false
+    expect_4 = true
+
+    actual_1 = list.includes?("deep")
+    actual_2 = list.includes?("woo")
+    actual_3 = list.includes?("dep")
+    actual_4 = list.includes?("shi")
+
+    assert_equal expect_1, actual_1
+    assert_equal expect_2, actual_2
+    assert_equal expect_3, actual_3
+    assert_equal expect_4, actual_4
+  end
+
+  def test_pop
+    list.append("deep")
+    list.append("woo")
+    list.append("shi")
+    list.append("shu")
+    list.append("blop")
+
+    expect_1 = "blop"
+    expect_2 = "shu"
+    expect_3 = "deep woo shi"
+
+    assert_equal expect_1, list.pop
+    assert_equal expect_2, list.pop
+    assert_equal expect_3, list.to_string
+  end
 # > list.pop
 # => "blop"
 # > list.pop
 # => "shu"
 # > list.to_string
-# => "deep woo shi"
+# =>
 end

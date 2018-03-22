@@ -1,3 +1,5 @@
+require_relative 'node'
+
 class LinkedList
   attr_reader :head
 
@@ -49,7 +51,7 @@ class LinkedList
       @head = new_node
     end
   end
-  
+
   def insert(index, data)
     @head = Node.new(data) if @head.nil?
     new_node = Node.new(data)
@@ -76,4 +78,17 @@ class LinkedList
     end
     elements
   end
+
+  def includes?(beat)
+    return false if @head.nil?
+    return true if @head.data == beat
+    current_node = @head
+
+    count.times do
+      return false if current_node.next_node.nil?
+      current_node = current_node.next_node
+      return true if current_node.data == beat
+    end
+  end
+
 end
