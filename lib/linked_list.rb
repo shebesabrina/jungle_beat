@@ -1,5 +1,4 @@
 require_relative 'node'
-
 class LinkedList
   attr_reader :head
 
@@ -90,5 +89,26 @@ class LinkedList
       return true if current_node.data == beat
     end
   end
+
+  def pop
+    return nil if @head.nil?
+    if @head.next_node.nil?
+      value = @head.data
+      @head.data = nil
+    else
+      current_node = @head
+      if current_node.next_node.nil?
+        current_node.data
+      else
+        until current_node.next_node.nil?
+          current_node = current_node.next_node
+        end
+        value = current_node.data
+        current_node = nil
+      end
+    end
+    value
+  end
+  #values is giving back nil, first test is passing need to work on getting the next node to equal nil
 
 end
