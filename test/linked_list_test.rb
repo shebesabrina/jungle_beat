@@ -107,6 +107,7 @@ class LinkedListTest < Minitest::Test
     list.append("shu")
     list.append("blop")
 
+
     assert_equal "shi", list.find(2, 1)
     assert_equal "woo shi shu", list.find(1, 3)
   end
