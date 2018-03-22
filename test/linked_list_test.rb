@@ -107,14 +107,8 @@ class LinkedListTest < Minitest::Test
     list.append("shu")
     list.append("blop")
 
-    expect_1 = "shi"
-    expect_2 = "woo shi shu"
-
-    actual_1 = list.find(2, 1)
-    actual_2 = list.find(1, 3)
-
-    assert_equal expect_1, actual_1
-    assert_equal expect_2, actual_2
+    assert_equal "shi", list.find(2, 1)
+    assert_equal "woo shi shu", list.find(1, 3)
   end
 
   def test_include
@@ -124,20 +118,10 @@ class LinkedListTest < Minitest::Test
     list.append("woo")
     list.append("shi")
 
-    expect_1 = true
-    expect_2 = true
-    expect_3 = false
-    expect_4 = true
-
-    actual_1 = list.includes?("deep")
-    actual_2 = list.includes?("woo")
-    actual_3 = list.includes?("dep")
-    actual_4 = list.includes?("shi")
-
-    assert_equal expect_1, actual_1
-    assert_equal expect_2, actual_2
-    assert_equal expect_3, actual_3
-    assert_equal expect_4, actual_4
+    assert_equal true, list.includes?("deep")
+    assert_equal true, list.includes?("woo")
+    assert_equal false, list.includes?("dep")
+    assert_equal true, list.includes?("shi")
   end
 
   def test_pop
@@ -150,12 +134,5 @@ class LinkedListTest < Minitest::Test
     list.append("blop")
 
     assert_equal "blop", list.pop
-
   end
-# > list.pop
-# => "blop"
-# > list.pop
-# => "shu"
-# > list.to_string
-# =>
 end
